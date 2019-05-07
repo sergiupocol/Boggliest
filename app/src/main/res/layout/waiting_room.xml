@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/codeDisplay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Code:"
+        android:textSize="50dp"
+        android:gravity="center_horizontal"
+        android:layout_marginBottom="40dp" />
+
+    <TextView
+        android:id="@+id/userDisplay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Player vs."
+        android:textSize="50dp"
+        android:gravity="center_horizontal"/>
+    <TextView
+        android:id="@+id/joineeDisplay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Joinee"
+        android:textSize="50dp"
+        android:gravity="center_horizontal"/>
+
+    <ProgressBar
+        android:layout_marginTop="70dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

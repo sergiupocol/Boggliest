@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">BoggleApp</string>
+    <string name="GAME_KEY">GAME_KEY</string>
+</resources>

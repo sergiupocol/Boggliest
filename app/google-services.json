@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "488123324065",
+    "firebase_url": "https://boggleapp-9d45a.firebaseio.com",
+    "project_id": "boggleapp-9d45a",
+    "storage_bucket": "boggleapp-9d45a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:488123324065:android:89937f877ec2faf3",
+        "android_client_info": {
+          "package_name": "com.example.android.boggleapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "488123324065-k39jmflrr3aipp586lii15i69mckqqpk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.android.boggleapp",
+            "certificate_hash": "dab9dd56ede51e4bc680b01666cd08b161e9732a"
+          }
+        },
+        {
+          "client_id": "488123324065-1fodasdhofre6l7mhfmes57u5vbd7bp9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbgJogxEEOxTysmCX1ULBN1rwPpu3bZAc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "488123324065-1fodasdhofre6l7mhfmes57u5vbd7bp9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
