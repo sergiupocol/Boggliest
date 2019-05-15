@@ -35,6 +35,7 @@ import static android.graphics.Color.WHITE;
 
 public class Game extends AppCompatActivity {
     final int GAME_DURATION = 20000;
+    Timer timer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,14 +44,10 @@ public class Game extends AppCompatActivity {
 
         setupGrid();
 
-
-
         /*
          * The following code will store acceptable english words
          * in a string called strBoggleWords
          */
-
-
 
         // from https://www.youtube.com/watch?v=UIIpCt2S5Ls
         StringBuffer sbuffer = new StringBuffer();
@@ -116,17 +113,14 @@ public class Game extends AppCompatActivity {
                 });
             }
         };
-        Timer timer = new Timer();
+        timer = new Timer();
         timer.schedule(timertask, GAME_DURATION);
-
-
-
-
     }
 
 
-
-
+    /**
+     * GAME OVER
+     */
     public void toEndScreen() {
 
         Intent intent = new Intent(this, endScreen.class);
@@ -134,7 +128,7 @@ public class Game extends AppCompatActivity {
         intent.putExtra("FinalScore", score);
         intent.putExtra("Multiplayer?", false);
         intent.putExtra("gameKey", -1);
-
+        intent.putExtra("wordHistory", wordsEntered);
 
         startActivity(intent);
     }
@@ -498,7 +492,10 @@ public class Game extends AppCompatActivity {
 
     @Override
     protected void onPause() {
+        timer.cancel();
         super.onPause();
+
+
     }
 
 

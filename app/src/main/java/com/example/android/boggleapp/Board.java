@@ -5,8 +5,6 @@ import java.util.List;
 
 public class Board {
 
-    public ArrayList<String> wordsEntered;
-    // will store the words in the dictionary
 
 
     public String lettersOnGrid;
@@ -19,8 +17,7 @@ public class Board {
 
 //
 
-    Board(java.util.ArrayList<java.lang.String> wordsEntered, String lettersOnGrid, String history, int scoreHost, int scoreJoinee) {
-        this.wordsEntered = wordsEntered;
+    Board( String lettersOnGrid, String history, int scoreHost, int scoreJoinee) {
         this.lettersOnGrid = lettersOnGrid;
         this.history = history;
         this.scoreHost = scoreHost;

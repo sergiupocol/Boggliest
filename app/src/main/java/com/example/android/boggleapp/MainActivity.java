@@ -143,7 +143,6 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("hostCode", codeAttempt);
 
 
-        Log.w("LOOK HERE", codeAttempt);
         final Intent endIntent = new Intent(this, endScreen.class);
 
 
@@ -157,8 +156,7 @@ public class MainActivity extends AppCompatActivity {
 
                     mBoardsDatabaseReference.child(codeAttempt + "").child("inSession").child("inProgress").setValue(true);
 
-                    // START THE NEXT ACTIVITY SISSS
-                    startActivity(intent);
+
 
 
                     // UPDATE SCORE DISPLAYS WITH NAMES
@@ -167,7 +165,8 @@ public class MainActivity extends AppCompatActivity {
                     mBoardsDatabaseReference.child(codeAttempt + "").child("Joinee").setValue(user.getDisplayName());
 
 
-
+                    // START THE NEXT ACTIVITY
+                    startActivity(intent);
 
                     // ATTACH A LISTENER
                     inSessionReference = mBoardsDatabaseReference.child(codeAttempt + "");
@@ -185,12 +184,11 @@ public class MainActivity extends AppCompatActivity {
                             boolean inSession = dataSnapshot.getValue(Boolean.class);
                             if (inSession) {
 
-                                Toast.makeText(MainActivity.this, "the game has started", Toast.LENGTH_SHORT).show();
                             } else {
 
 
 
-                                endIntent.putExtra("FinalScore", -2345);
+                                endIntent.putExtra("FinalScore", 0);
 
                                 startActivity(endIntent);
                             }
@@ -207,9 +205,8 @@ public class MainActivity extends AppCompatActivity {
                         }
                     };
 
-                    //
-                    inSessionReference.child("inSession").addChildEventListener(inSessionListener);
 
+                    inSessionReference.child("inSession").addChildEventListener(inSessionListener);
 
                 }
             }
@@ -269,6 +266,7 @@ public class MainActivity extends AppCompatActivity {
 
         inSessionReference = mBoardsDatabaseReference.child(hostCode + "");
         inSessionReference.child("inSession").child("inProgress").setValue(false);
+        inSessionReference.child("inSession").child("gameOver").setValue(false);
         inSessionListener = new ChildEventListener() {
 
 

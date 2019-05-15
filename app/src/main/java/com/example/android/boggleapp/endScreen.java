@@ -29,11 +29,13 @@ public class endScreen extends AppCompatActivity {
 
         boolean isMultiplayer = false;
         String gameKey = "";
+        String wordHistory = "";
 
         if (intentBundle != null) {
             final int finalScore = intentBundle.getInt("FinalScore");
             isMultiplayer = intentBundle.getBoolean("Multiplayer?");
             gameKey = intentBundle.getString("gameKey");
+            wordHistory = intentBundle.getString("wordHistory");
 
 
 
@@ -58,6 +60,12 @@ public class endScreen extends AppCompatActivity {
 
             Log.w("SERGIU LOOK HEREEEE", gameKey + "");
             DatabaseReference sessionRef = FirebaseDatabase.getInstance().getReference().child("Boards").child(gameKey + "");
+
+            // HERE CHANGE THE VALUE OF gameOver
+            FirebaseDatabase.getInstance().getReference().child("Boards").child(gameKey + "").child("inSession").child("gameOver").setValue(true);
+            // NOW UR CLOUD FUNCTION SHOULD TAKE OVER AND EMAIL THE WORD HISTORY
+
+
             sessionRef.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -71,17 +79,18 @@ public class endScreen extends AppCompatActivity {
                     TextView goMessage = (TextView) findViewById(R.id.game_over_message);
                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                     if (user != null) {
-                        goMessage.setText(goMessage.getText() + user.getDisplayName());
+                        goMessage.setText("Game over " + user.getDisplayName() + "!");
                     }
 
 
                     // DISPLAY WINNER
                     TextView winnerDisplay = (TextView) findViewById(R.id.finalScoreDisplay);
-                    if (scoreHost == scoreJoinee) winnerDisplay.setText("TIE!!!");
-                    if (scoreHost > scoreJoinee) {
-                        winnerDisplay.setText(hostName + " won!!!");
+                    if (scoreHost == scoreJoinee) {
+                        winnerDisplay.setText("TIE!!!");
+                    } else if (scoreHost > scoreJoinee) {
+                        winnerDisplay.setText(" " + hostName + " won!!!");
                     } else {
-                        winnerDisplay.setText(joineeName + " won!!!");
+                        winnerDisplay.setText(" " + joineeName + " won!!!");
                     }
 
 

@@ -49,7 +49,7 @@ public class hostGrid extends Game {
         }
 
         // create a board object to store the game info
-        com.example.android.boggleapp.Board board = new Board(wordsEntered, gridLetters, "", 0, 0);
+        com.example.android.boggleapp.Board board = new Board( gridLetters, "", 0, 0);
 
         // GETTING THE HOSTCODE FROM THE MAIN ACTIVITY
         Intent intent = getIntent();
@@ -61,7 +61,7 @@ public class hostGrid extends Game {
         // write the Board object to the database
         mBoardsDatabaseReference.child(GAME_KEY).child("Game in session").setValue(board);
 
-        wordsEntered.add("INVALIR");
+        wordsEntered.add("INVALID");
         // Create a new child to store the submitted words
         mBoardsDatabaseReference.child(GAME_KEY).child("Submitted Words").setValue(Arrays.asList(wordsEntered.toArray()));
 
